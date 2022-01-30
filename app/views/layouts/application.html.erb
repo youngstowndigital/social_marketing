@@ -10,7 +10,16 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column h-100">
+    <%= render 'layouts/nav' %>
+    <br />
+    <main class="flex-shrink-0">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+    <br />
+    <br />
+    <%= render 'layouts/footer' %>
   </body>
 </html>
