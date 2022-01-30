@@ -15,6 +15,11 @@
     <br />
     <main class="flex-shrink-0">
       <div class="container">
+        <% flash.each do |msg_type, message| %>
+          <div class="alert alert-<%= msg_type %>" role="alert">
+            <%= message %>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </main>
