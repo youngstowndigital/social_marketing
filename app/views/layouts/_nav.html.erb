@@ -1,5 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <%= link_to "Social Marketing", root_path, class: "navbar-brand" %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <% if logged_in? %>
+                <li class="nav-item">
+                    <%= link_to "Logout", 
+                        logout_path, 
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to log out?" },
+                        class: "nav-link" %>
+                </li>
+            <% else %>
+                <li class="nav-item">
+                    <%= link_to "Login", login_path, class: "nav-link" %>
+                </li>
+            <% end %>
+        </ul>
     </div>
 </nav>
