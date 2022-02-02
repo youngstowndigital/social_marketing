@@ -9,6 +9,12 @@
                         data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to log out?" },
                         class: "nav-link" %>
                 </li>
+                <li class="nav-item">
+                    <%= link_to "Posts", posts_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "New Post", new_post_path, class: "nav-link" %>
+                </li>
             <% else %>
                 <li class="nav-item">
                     <%= link_to "Login", login_path, class: "nav-link" %>
