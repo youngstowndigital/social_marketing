@@ -20,6 +20,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:schedule, :text)
+        params.require(:post).permit(:title, :schedule, :text)
     end
 end
