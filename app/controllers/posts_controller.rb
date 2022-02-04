@@ -9,6 +9,10 @@ class PostsController < ApplicationController
         @post = current_user.posts.build
     end
 
+    def show
+        @post = current_user.posts.find(params[:id])
+    end
+
     def create
         @post = current_user.posts.build(post_params)
 
@@ -31,6 +35,12 @@ class PostsController < ApplicationController
         else
             render 'new'
         end
+    end
+
+    def destroy
+        @post = current_user.posts.find(params[:id])
+        @post.destroy
+        redirect_to posts_path, status: :see_other
     end
 
     private
