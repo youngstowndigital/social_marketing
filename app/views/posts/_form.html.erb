@@ -1,0 +1,25 @@
+<%= form_for @post, data: { turbo: false }, local: true do |f| %>
+    <% @post.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger" role="alert">
+            <%= message %>
+        </div>
+    <% end %>
+    <div class="py-2">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="py-2">
+        <%= f.label :text %>
+        <%= f.text_area :text, class: "form-control" %>
+    </div>
+
+    <div class="py-2">
+        <%= f.label :schedule %>
+        <%= f.date_field :schedule, class: "form-control" %>
+    </div>
+
+    <div class="py-2">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+<% end %>
