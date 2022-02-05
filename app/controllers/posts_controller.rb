@@ -17,6 +17,7 @@ class PostsController < ApplicationController
         @post = current_user.posts.build(post_params)
 
         if @post.save
+            flash[:success] = "Post scheduled"
             redirect_to posts_path
         else
             render 'new'
@@ -31,6 +32,7 @@ class PostsController < ApplicationController
         @post = current_user.posts.find(params[:id])
 
         if @post.update(post_params)
+            flash[:success] = "Post rescheduled"
             redirect_to posts_path
         else
             render 'new'
