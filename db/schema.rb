@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_220455) do
+ActiveRecord::Schema.define(version: 2022_02_05_133624) do
 
   create_table "posts", force: :cascade do |t|
     t.string "text"
-    t.date "schedule"
+    t.datetime "schedule"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

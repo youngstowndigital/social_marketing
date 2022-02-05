@@ -9,14 +9,40 @@ class PostsController < ApplicationController
         @post = current_user.posts.build
     end
 
+    def show
+        @post = current_user.posts.find(params[:id])
+    end
+
     def create
         @post = current_user.posts.build(post_params)
 
         if @post.save
+            flash[:success] = "Post scheduled"
             redirect_to posts_path
         else
             render 'new'
         end
+    end
+
+    def edit
+        @post = current_user.posts.find(params[:id])
+    end
+
+    def update
+        @post = current_user.posts.find(params[:id])
+
+        if @post.update(post_params)
+            flash[:success] = "Post rescheduled"
+            redirect_to posts_path
+        else
+            render 'new'
+        end
+    end
+
+    def destroy
+        @post = current_user.posts.find(params[:id])
+        @post.destroy
+        redirect_to posts_path, status: :see_other
     end
 
     private
