@@ -277,6 +277,7 @@ DEPENDENCIES
   mini_magick (= 4.9.5)
   passenger
   rails (~> 7.0.0)
+  redis
   sassc-rails (~> 2.1)
   selenium-webdriver
   sidekiq
