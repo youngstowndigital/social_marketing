@@ -1,7 +1,14 @@
 <div class="py-3">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title"><%= post.title %></h5>
+            <h5 class="card-title">
+                <%= post.title %>
+                <% if post.posted %>
+                    <span class="badge bg-success">Posted</span>
+                <% else %>
+                    <span class="badge bg-primary">Scheduled</span>
+                <% end %>
+            </h5>
             <p class="card-text"><%= post.text %></p>
             <%= link_to "Edit", edit_post_path(post),  class: "btn btn-primary" %>
             <%= link_to "Delete", post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
