@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
         if @post.save
             flash[:success] = "Post scheduled"
-            SubmitPostJob.set(wait_until: @post.schedule).perform_later(@post.id, @post.updated_at)
+            @post.schedule_post
             redirect_to posts_path
         else
             render 'new'
@@ -34,6 +34,7 @@ class PostsController < ApplicationController
 
         if @post.update(post_params)
             flash[:success] = "Post rescheduled"
+            @post.schedule_post
             redirect_to posts_path
         else
             render 'new'
