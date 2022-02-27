@@ -1,0 +1,25 @@
+<%= form_for @twitter_account, data: { turbo: false }, local: true do |f| %>
+    <% @twitter_account.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger" role="alert">
+            <%= message %>
+        </div>
+    <% end %>
+    <div class="py-2">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="py-2">
+        <%= f.label :access_token %>
+        <%= f.text_field :access_token, class: "form-control" %>
+    </div>
+
+    <div class="py-2">
+        <%= f.label :access_token_secret %>
+        <%= f.text_field :access_token_secret, class: "form-control" %>
+    </div>
+
+    <div class="py-2">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+<% end %>
