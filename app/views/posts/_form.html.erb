@@ -20,6 +20,11 @@
     </div>
 
     <div class="py-2">
+        <%= f.label :twitter_account %>
+        <%= f.select :twitter_account_id, options_for_select(current_user.twitter_accounts.map {|t|[t.name, t.id]}), {}, { :class => 'form-control' } %>
+    </div>
+
+    <div class="py-2">
         <%= f.submit "Submit", class: "btn btn-primary" %>
     </div>
 <% end %>

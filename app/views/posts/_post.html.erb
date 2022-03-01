@@ -9,7 +9,10 @@
                     <span class="badge bg-primary">Scheduled</span>
                 <% end %>
             </h5>
-            <p class="card-text"><%= post.text %></p>
+            <p class="card-text">
+                <%= post.text %> <br/>
+                <strong>Twitter Account:</strong> <%= post.twitter_account ? post.twitter_account.name : 'None' %>
+            </p>
             <%= link_to "Edit", edit_post_path(post),  class: "btn btn-primary" %>
             <%= link_to "Delete", post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         </div>

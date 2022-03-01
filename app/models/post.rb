@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :twitter_account
 
   validates :title, presence: true
   validates :text, presence: true

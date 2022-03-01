@@ -5,9 +5,6 @@ class TwitterAccountsController < ApplicationController
         @twitter_accounts = current_user.twitter_accounts
     end
 
-    def show
-    end
-
     def new
         @twitter_account = current_user.twitter_accounts.build
     end
@@ -40,10 +37,10 @@ class TwitterAccountsController < ApplicationController
         end
     end
 
-    def edit
-    end
-
-    def update
+    def destroy
+        @twitter_account = current_user.twitter_accounts.find(params[:id])
+        @twitter_account.destroy
+        redirect_to twitter_accounts_path, status: :see_other
     end
 
     private

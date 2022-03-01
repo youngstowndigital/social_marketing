@@ -8,6 +8,7 @@
                 <strong>Access Token:</strong> <%= twitter_account.access_token %><br />
                 <strong>Access Token Secret:</strong> <%= twitter_account.access_token_secret %>
             </p>
+            <%= link_to "Delete", twitter_account_path(twitter_account), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         </div>
     </div>
 </div>
