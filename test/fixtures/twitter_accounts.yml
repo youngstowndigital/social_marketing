@@ -1,1 +1,5 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+test:
+  user: test
+  access_token: testaccesstoken
+  access_token_secret: testaccesstokensecret
