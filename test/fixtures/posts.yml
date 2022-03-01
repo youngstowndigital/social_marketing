@@ -1,1 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+test:
+  title: Test title
+  text: Test text
+  user: test
+  twitter_account: test
