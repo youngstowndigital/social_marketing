@@ -50,6 +50,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :schedule, :text)
+        params.require(:post).permit(:title, :schedule, :text, :twitter_account_id)
     end
 end
