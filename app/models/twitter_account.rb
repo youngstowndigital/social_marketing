@@ -1,4 +1,5 @@
 class TwitterAccount < ApplicationRecord
+    before_save :validate_tokens
     belongs_to :user
     has_many :posts, dependent: :destroy
     
