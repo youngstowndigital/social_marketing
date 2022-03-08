@@ -1,1 +1,15 @@
 <h1><%= @user.name %></h1>
+<ul class="posts nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link posted active">Posted</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link scheduled">Scheduled</a>
+    </li>
+</ul>
+<div id="posted">
+    <%= render @posts.has_posted %>
+</div>
+<div id="pending">
+    <%= render @posts.pending_post %>
+</div>

@@ -6,6 +6,9 @@ class Post < ApplicationRecord
   validates :text, presence: true
   validates :schedule, presence: true
 
+  scope :has_posted, -> { where(posted: true) }
+  scope :pending_post, -> { where(posted: false) }
+
   def schedule_post
     SubmitPostJob.set(wait_until: schedule).perform_later(id, updated_at)
   end
