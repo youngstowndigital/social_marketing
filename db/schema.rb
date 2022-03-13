@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_27_225250) do
+ActiveRecord::Schema.define(version: 2022_03_12_213702) do
 
   create_table "posts", force: :cascade do |t|
     t.string "text"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2022_02_27_225250) do
     t.string "title"
     t.boolean "posted", default: false
     t.integer "twitter_account_id"
+    t.string "timezone"
     t.index ["twitter_account_id"], name: "index_posts_on_twitter_account_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
