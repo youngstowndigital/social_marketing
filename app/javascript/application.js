@@ -3,21 +3,23 @@
 //= require jquery_ujs
 import "@hotwired/turbo-rails"
 import "controllers"
+import { Turbo } from "@hotwired/turbo-rails"
+Turbo.session.drive = false
 
-$(document).ready(function() {
-    console.log("ready!");
-
-    $('.posts .nav-item .posted').on("click", function() {
-        $('.posts .nav-item .active').removeClass('active');
-        $('#pending').css("display", "none");
-        $('#posted').css("display", "block");
-        $(this).addClass('active');
-    })
-
-    $('.posts .nav-item .scheduled').on("click", function() {
-        $('.posts .nav-item .active').removeClass('active');
-        $('#posted').css("display", "none");
-        $('#pending').css("display", "block");
-        $(this).addClass('active');
-    })
+window.addEventListener("load", () => {
+    $(function() {    
+        $('.posts .nav-item .posted').on("click", function() {
+            $('.posts .nav-item .active').removeClass('active');
+            $('#pending').css("display", "none");
+            $('#posted').css("display", "block");
+            $(this).addClass('active');
+        })
+    
+        $('.posts .nav-item .scheduled').on("click", function() {
+            $('.posts .nav-item .active').removeClass('active');
+            $('#posted').css("display", "none");
+            $('#pending').css("display", "block");
+            $(this).addClass('active');
+        })
+    });
 });
