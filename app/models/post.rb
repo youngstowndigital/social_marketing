@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :text, presence: true
   validates :schedule, presence: true
+  validates :timezone, presence: true
 
   scope :has_posted, -> { where(posted: true) }
   scope :pending_post, -> { where(posted: false) }
