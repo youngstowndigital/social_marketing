@@ -4,3 +4,5 @@ test:
   text: Test text
   user: test
   twitter_account: test
+  schedule: "Tue, 08 Feb 2022 02:05:00.000000000 UTC +00:00"
+  timezone: "Eastern Time (US & Canada)"

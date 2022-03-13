@@ -31,7 +31,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "creating a post with logged in user" do
     login_user(@user, 'testpassword')
     assert_difference 'Post.count' do
-      post posts_path, params: { post: { title: "Test", text: "Test", schedule: 'Tue, 08 Feb 2022 02:05:00.000000000 UTC +00:00', twitter_account_id: @twitter_account.id } }
+      post posts_path, params: { post: { title: "Test", text: "Test", schedule: 'Tue, 08 Feb 2022 02:05:00.000000000 UTC +00:00', timezone: 'Central Time (US & Canada)', twitter_account_id: @twitter_account.id } }
     end
     assert_redirected_to posts_path
   end
