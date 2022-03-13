@@ -25,4 +25,14 @@ class Post < ApplicationRecord
 
     client.update(text)
   end
+
+  def set_utc_date
+    off_set = Time.zone_offset(ActiveSupport::TimeZone.find_tzinfo(timezone).abbreviation) / (60*60)
+    timezone_time = DateTime.parse(schedule.strftime('%a, %d %b %Y %H:%M:%S')).change(offset: off_set.to_s)
+    update_column(:schedule, timezone_time.utc)
+  end
+
+  def scheduled_date
+    schedule.in_time_zone(timezone)
+  end
 end

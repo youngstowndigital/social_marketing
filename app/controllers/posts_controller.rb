@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 
         if @post.save
             flash[:success] = "Post scheduled"
+            @post.set_utc_date
             @post.schedule_post
             redirect_to posts_path
         else
@@ -34,6 +35,7 @@ class PostsController < ApplicationController
 
         if @post.update(post_params)
             flash[:success] = "Post rescheduled"
+            @post.set_utc_date
             @post.schedule_post
             redirect_to posts_path
         else
@@ -50,6 +52,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :schedule, :text, :twitter_account_id)
+        params.require(:post).permit(:title, :schedule, :text, :timezone, :twitter_account_id)
     end
 end
