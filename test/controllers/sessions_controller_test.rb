@@ -20,4 +20,10 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_template :new
     assert_not flash.empty?
   end
+
+  test "unsuccessful login with non existent user" do
+    post login_path, params: { session: { email: "fake@email.com", password: "fakepassword" } }
+    assert_template :new
+    assert_not flash.empty?
+  end
 end
