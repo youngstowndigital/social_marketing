@@ -1,24 +1,54 @@
-# README
+# Social App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the repo for Social App. A site for scheduling Twitter social media posts
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+cd into the root of the repository and run the following commands:
 
-* System dependencies
+Install gem dependencies:
+`
+bundle install
+`
 
-* Configuration
+Migrate database:
+`
+rails db:migrate
+`
 
-* Database creation
+Add config.yml:
+`
+twitter:
+  consumer_secret:
+  consumer_key:
+  access_token:
+  access_token_secret:
+`
 
-* Database initialization
+## Dependencies
 
-* How to run the test suite
+This project requires ruby and ruby on rails to be installed (https://rubyonrails.org)
 
-* Services (job queues, cache servers, search engines, etc.)
+Redis (I used homebrew to install redis)
+Sidekiq (I used ruby to install sidekiq)
 
-* Deployment instructions
+## Run
 
-* ...
+Run the following command:
+
+`
+rails s
+`
+
+## Deployment
+
+This is currently deployed on my raspberrypi on my local network. This was the guide used:
+https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/standalone/oss/deploy_app_main.html
+
+Steps:
+
+- SSH to raspberry pi as lego_site user and pull the latest code in /var/www/lego_site/code
+- Switch to root user and run `rvmsudo bundle exec passenger stop` to stop passenger
+- Switch to lego_site user and run `bundle install --deployment --without development test` `bundle exec rake assets:precompile db:migrate RAILS_ENV=production`
+- Switch to pi user and run 1 `rvmsudo bundle exec passenger start` to start the server back up
+
