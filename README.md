@@ -51,4 +51,5 @@ Steps:
 - Switch to root user and run `rvmsudo bundle exec passenger stop` to stop passenger
 - Switch to lego_site user and run `bundle install --deployment --without development test` `bundle exec rake assets:precompile db:migrate RAILS_ENV=production`
 - Switch to pi user and run 1 `rvmsudo bundle exec passenger start` to start the server back up
+- bundle exec sidekiq -d -L log/sidekiq.log -C config/sidekiq.yml -e production
 
