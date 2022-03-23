@@ -1,0 +1,9 @@
+<%= form_with model: @user, url: confirmations_path do |f| %>
+    <div class="py-2">
+        <%= f.label :email %>
+        <%= f.email_field :email, required: true, class: "form-control" %>
+    </div>
+    <div class="py-2">
+        <%= f.submit "Confirm Email", class: "btn btn-primary" %>
+    </div>
+<% end %>
