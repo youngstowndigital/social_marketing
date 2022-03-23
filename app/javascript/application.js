@@ -1,10 +1,7 @@
 // Entry point for the build script in your package.json
 //= require jquery3
 //= require jquery_ujs
-import "@hotwired/turbo-rails"
-import "controllers"
-import { Turbo } from "@hotwired/turbo-rails"
-Turbo.session.drive = false
+//= require_self
 
 window.addEventListener("load", () => {
     $(function() {    
