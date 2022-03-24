@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :logged_in, only: [:show]
+    before_action :redirect_if_unauthenticated, only: [:show]
 
     def  show
         @user = User.find(params[:id])
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save
+            @user.send_confirmation_email!
             flash[:success] = "Please check your email for confirmation instructions."
             redirect_to @user
         else

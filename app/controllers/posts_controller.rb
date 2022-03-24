@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :logged_in
+    before_action :redirect_if_unauthenticated
 
     def index
         @posts = current_user.posts
