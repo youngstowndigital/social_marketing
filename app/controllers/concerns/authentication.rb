@@ -18,14 +18,14 @@ module Authentication
 
     def redirect_if_authenticated
         if user_signed_in?
-            flash[:alert] = "You are already logged in."
+            flash[:danger] = "You are already logged in."
             redirect_to user_path Current.user
         end
     end
 
     def redirect_if_unauthenticated
         if !user_signed_in?
-            flash[:alert] = "You must be authenticated."
+            flash[:danger] = "You must be authenticated."
             redirect_to root_path
         end
     end
