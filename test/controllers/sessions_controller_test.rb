@@ -3,6 +3,7 @@ require "test_helper"
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:test)
+    @unconfirmed = users(:unconfirmed)
   end
 
   test "should get new" do
@@ -23,6 +24,12 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "unsuccessful login with non existent user" do
     post login_path, params: { session: { email: "fake@email.com", password: "fakepassword" } }
+    assert_template :new
+    assert_not flash.empty?
+  end
+
+  test "unsuccessful login with unconfirmed user" do
+    post login_path, params: { session: { email: @unconfirmed.email, password: 'testpassword' } }
     assert_template :new
     assert_not flash.empty?
   end

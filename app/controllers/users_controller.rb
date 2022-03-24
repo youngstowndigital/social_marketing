@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :redirect_if_authenticated, only: [:new, :create]
     before_action :redirect_if_unauthenticated, only: [:show]
 
     def  show
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
         if @user.save
             @user.send_confirmation_email!
             flash[:success] = "Please check your email for confirmation instructions."
-            redirect_to @user
+            redirect_to root_path
         else
             render 'new'
         end
