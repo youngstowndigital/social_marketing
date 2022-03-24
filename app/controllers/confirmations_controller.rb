@@ -7,7 +7,7 @@ class ConfirmationsController < ApplicationController
             flash[:success] = "Check your email for confirmation instructions"
             redirect_to root_path
         else
-            flash[:alert] = "We could not find a user with that email or that email has already been confirmed"
+            flash[:danger] = "We could not find a user with that email or that email has already been confirmed"
             redirect_to new_confirmation_path
         end
     end
@@ -17,9 +17,11 @@ class ConfirmationsController < ApplicationController
 
         if @user.present?
             @user.confirm!
-            flash[:notice] = "Your account has been confirmed"
+            login @user
+            flash[:success] = "Your account has been confirmed"
+            redirect_to user_path @user
         else
-            flash[:alert] = "Invalid token."
+            flash[:danger] = "Invalid token."
             redirect_to new_confirmation_path
         end
     end

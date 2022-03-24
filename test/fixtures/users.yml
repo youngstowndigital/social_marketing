@@ -3,8 +3,15 @@ test:
   email: test@test.com
   name: Test User
   password_digest: <%= BCrypt::Password.create('testpassword') %>
+  confirmed_at: <%= Date.current %>
 
 other:
   email: other@test.com
   name: Other User
+  password_digest: <%= BCrypt::Password.create('testpassword') %>
+  confirmed_at: <%= Date.current %>
+
+unconfirmed:
+  email: unconfirmed@test.com
+  name: Unconfirmed User
   password_digest: <%= BCrypt::Password.create('testpassword') %>

@@ -17,21 +17,25 @@ class User < ApplicationRecord
     validates :name, presence: true,
                      length: { minimum: 5 }
 
-    def confirmed!
+    def confirm!
         update_columns(confirmed_at: Time.current)
+    end
+
+    def confirmed?
+        confirmed_at.present?
     end
 
     def generate_confirmation_token
         signed_id expires_in: CONFIRMATION_TOKEN_EXPIRATION, purpose: :confirm_email
     end
 
-    def confirmed?
+    def unconfirmed?
         !confirmed?
     end
 
     def send_confirmation_email!
-        confirmation = generate_confirmation_token
-        UserMailer.confirmation(self, confirmation_token)
+        confirmation_token = generate_confirmation_token
+        UserMailer.confirmation(self, confirmation_token).deliver_now
     end
 
     private
