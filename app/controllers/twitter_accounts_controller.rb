@@ -1,5 +1,5 @@
 class TwitterAccountsController < ApplicationController
-    before_action :logged_in
+    before_action :redirect_if_unauthenticated
 
     def index
         @twitter_accounts = current_user.twitter_accounts

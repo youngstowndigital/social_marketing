@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :redirect_if_authenticated
+
   def home
-    redirect_to current_user if logged_in?
   end
 end

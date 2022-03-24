@@ -3,6 +3,7 @@ class ConfirmationsController < ApplicationController
         @user = User.find_by(email: params[:user][:email])
 
         if @user.present? && @user.unconfirmed?
+            @user.send_confirmation_email!
             flash[:success] = "Check your email for confirmation instructions"
             redirect_to root_path
         else

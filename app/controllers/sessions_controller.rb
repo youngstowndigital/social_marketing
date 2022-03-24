@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
 
     if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
+      login @user
       redirect_to @user
     else
       flash.now[:danger] = 'Incorrect email/password combination'
@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
+    logout
+    flash[:success] = "Signed out"
     redirect_to root_path, status: :see_other
   end
 end
