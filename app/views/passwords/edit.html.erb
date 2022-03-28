@@ -1,0 +1,13 @@
+<%= form_with url: password_path(params[:password_reset_token]), scope: :user, method: :put do |f| %>
+    <div class="py-2">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="py-2">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    <div class="py-2">
+        <%= f.submit "Update Password", class: "btn btn-primary" %>
+    </div>
+<% end %>
