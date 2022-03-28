@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :posts
   resources :twitter_accounts, except: [:show, :edit, :update]
   resources :confirmations, only: [:create, :edit, :new], param: :confirmation_token
+  resources :passwords, only: [:create, :edit, :new, :update], param: :password_reset_token
 end
